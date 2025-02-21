@@ -67,14 +67,13 @@ try:
         all_match = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, '//*[@title="Zobacz szczegóły meczu!"]')))
         ilosc = len(all_match)
         st.write(ilosc)
+        c.close()
+        conn.close()
+        st.write("Connection closed.")
+
+
 
 except Exception as e:
     st.write(f"Failed to connect: {e}")
-
-finally:
-    c.close()
-    conn.close()
-    st.write("Connection closed.")
-    
 
 st.title('Test')
