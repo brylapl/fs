@@ -13,7 +13,7 @@ PASSWORD = st.secrets["postgresql"]["password"]
 HOST = st.secrets["postgresql"]["host"]
 PORT = st.secrets["postgresql"]["port"]
 DBNAME = st.secrets["postgresql"]["dbname"]
-st.write(USER)
+st.write(HOST)
 
 # Connect to the database
 try:
