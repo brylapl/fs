@@ -69,17 +69,17 @@ try:
             pass
         st.write(driver.title)
 
-    number = st.number_input("Dni do porzodu",min_value=1, max_value=7, step=1)
-    st.write("Wybrna ilość dni do przodu: np. 1:jutro, 2:pojutrze, itd. ", number)
-    
-    open_date = st.button("Otwórz wybraną datę", type="primary")
-    if open_date:
-        date_picker = driver.find_element(By.XPATH,'//button[@id="calendarMenu"]')
-        date_picker.click()
-        data = driver.find_element(By.XPATH,'//li[@class="calendar__listItem"]/button[contains(text(),"Dzisiaj")]/../following-sibling::li[number]')
-        data.click()
-        data_txt = data.text
-        st.write(data_txt)
+        number = st.number_input("Dni do porzodu",min_value=1, max_value=7, step=1)
+        st.write("Wybrna ilość dni do przodu: np. 1:jutro, 2:pojutrze, itd. ", number)
+        
+        open_date = st.button("Otwórz wybraną datę", type="primary")
+        if open_date:
+            date_picker = driver.find_element(By.XPATH,'//button[@id="calendarMenu"]')
+            date_picker.click()
+            data = driver.find_element(By.XPATH,'//li[@class="calendar__listItem"]/button[contains(text(),"Dzisiaj")]/../following-sibling::li[number]')
+            data.click()
+            data_txt = data.text
+            st.write(data_txt)
         
         
         
