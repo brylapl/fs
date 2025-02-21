@@ -2,5 +2,3 @@ streamlit
 selenium == 4.13.0
 seleniumbase
 webdriver-manager
-python-dotenv
-psycopg2
