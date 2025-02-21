@@ -65,9 +65,41 @@ try:
     
         st.write(driver.title)
         all_match = driver.find_elements(By.XPATH,'//*[@title="Zobacz szczegóły meczu!"]')
-        for match in all_match:
-            liga = match.find_element(By.XPATH,'./preceding::div[contains(@class,"wclLeagueHeader")][1]/div[2]/div[1]/div[2]/span[1]').text
-            st.write(liga)
+        data = driver.find_element(By.XPATH,'//button[@id="calendarMenu"]').text
+
+        data = data.split(' ')[0]
+        data = f'{data}/2025'
+        data = datetime.strptime(data, "%d/%m/%Y")
+        data = data.strftime("%Y-%m-%d")
+        ilosc = len(all_match)
+        for mecz in all_match:
+            liga = mecz.find_element(By.XPATH,'./preceding::div[contains(@class,"wclLeagueHeader")][1]/div[2]/div[1]/div[2]/span[1]').text
+            rozgrywki = mecz.find_element(By.XPATH,'./preceding::div[contains(@class,"wclLeagueHeader")][1]/div[2]/div[1]/div[2]/a').text
+            id = mecz.find_element(By.XPATH,'./..')
+            id = id.get_attribute('id')
+            id = id[4:]
+            ilosc -= 1
+            url = f'https://www.flashscore.pl/mecz/{id}/#/zestawienie-kursow/kursy-1x2/koniec-meczu'
+            time = mecz.find_element(By.XPATH,'./following-sibling::div[1]').text
+            home = mecz.find_element(By.XPATH,'./following-sibling::div[2]').text
+            away = mecz.find_element(By.XPATH,'./following-sibling::div[3]').text
+            stats = {
+                'data': data,
+                'time':time,
+                'liga': liga,
+                'rozgrywki':rozgrywki,
+                'home': home,
+                'away': away,
+                'url':url,
+                }
+            tabela.append(stats)
+
+        df = pd.DataFrame(tabela)
+        records_home = df.to_records(index=False)
+        list_of_tuples_home = list(records_home)
+        c.executemany('INSERT INTO upcoming_match (data, time, liga, rozgrywki, home, away, url) VALUES (?,?,?,?,?,?,?)',list_of_tuples_home)
+        conn.commit()
+        
         c.close()
         conn.close()
         st.write("Connection closed.")
