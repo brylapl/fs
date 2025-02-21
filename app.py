@@ -102,7 +102,7 @@ try:
         df = pd.DataFrame(tabela)
         records_home = df.to_records(index=False)
         list_of_tuples_home = list(records_home)
-        c.executemany('INSERT INTO upcoming_match (data, time, liga, rozgrywki, home, away, url) VALUES (?,?,?,?,?,?,?)',list_of_tuples_home)
+        c.executemany('INSERT INTO upcoming_match (data, time, liga, rozgrywki, home, away, url) VALUES (%s, %s, %s, %s, %s, %s, %s)', list_of_tuples_home)
         conn.commit()
         
         c.close()
