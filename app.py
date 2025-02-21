@@ -70,7 +70,7 @@ try:
         st.write(driver.title)
 
         date_page = st.checkbox("I agree")
-            if date_page:
+        if date_page:
             st.write("Wybierz ilośćdni do przodu. 1: jutro, 2:pojutrze, 3" za 3 dni itd.")
             number = st.number_input("Dni do porzodu",min_value=1, max_value=7, step=1)
             st.write("Wybrna ilość dni do przodu:", number)
