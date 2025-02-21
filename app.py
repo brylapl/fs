@@ -58,6 +58,7 @@ try:
     c = conn.cursor()
 
     start_button = st.button("Uruchom", type="primary")
+    tabela = []
     if start_button:
         driver = web_driver()
         driver.get('https://www.flashscore.pl/')
