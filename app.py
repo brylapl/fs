@@ -8,11 +8,12 @@ import os
 load_dotenv()
 
 # Fetch variables
-USER = os.getenv("user")
-PASSWORD = os.getenv("password")
-HOST = os.getenv("host")
-PORT = os.getenv("port")
-DBNAME = os.getenv("dbname")
+USER = st.secrets["postgresql"]["user"]
+PASSWORD = st.secrets["postgresql"]["password"]
+HOST = st.secrets["postgresql"]["host"]
+PORT = st.secrets["postgresql"]["port"]
+DBNAME = st.secrets["postgresql"]["dbname"]
+st.write(USER)
 
 # Connect to the database
 try:
