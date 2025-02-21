@@ -62,9 +62,6 @@ try:
     st.write("Wybierz ilośćdni do przodu: ")
     number = st.number_input("Dni do porzodu",min_value=1, max_value=7, step=1)
     st.write("Wybrna ilość dni do przodu:", number)
-    data = f'''driver.find_element(By.XPATH,'//li[@class="calendar__listItem"]/button[contains(text(),"Dzisiaj")]/../following-sibling::li[{number}]')'''
-    st.write(data)
-
     
     if open_flashscore:
         driver = web_driver()
@@ -78,7 +75,7 @@ try:
 
         date_picker = driver.find_element(By.XPATH,'//button[@id="calendarMenu"]')
         date_picker.click()
-        data = driver.find_element(By.XPATH,'//li[@class="calendar__listItem"]/button[contains(text(),"Dzisiaj")]/../following-sibling::li[number]')
+        data = driver.find_element(By.XPATH,f'//li[@class="calendar__listItem"]/button[contains(text(),"Dzisiaj")]/../following-sibling::li[{number}]')
         data.click()
         data_txt = data.text
         st.write(data_txt)
