@@ -23,12 +23,19 @@ PORT = st.secrets["postgresql"]["port"]
 DBNAME = st.secrets["postgresql"]["dbname"]
 
 def web_driver():
-    options = Options()
+    options = webdriver.ChromeOptions()
     options.add_argument('--verbose')
     options.add_argument('--no-sandbox')
-    options.add_argument("--headless=new")
+    options.add_argument('--headless')
     options.add_argument('--disable-gpu')
+    options.add_argument('--disable-dev-shm-usage')
+    options.add_argument("--enable-javascript")
+    options.add_argument("--incognito")
+    options.add_argument("--nogpu")
     options.add_argument("--window-size=1920x1080")
+    options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    options.add_experimental_option('useAutomationExtension', False)
+    options.add_argument('--disable-blink-features=AutomationControlled')
     options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36')
     driver = webdriver.Chrome(options=options)
     return driver
