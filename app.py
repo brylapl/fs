@@ -59,6 +59,10 @@ try:
 
     open_flashscore = st.button("Otwórz Flashscore", type="primary")
     tabela = []
+    st.write("Wybierz ilośćdni do przodu. 1: jutro, 2:pojutrze, 3: za 3 dni itd.")
+    number = st.number_input("Dni do porzodu",min_value=1, max_value=7, step=1)
+    st.write("Wybrna ilość dni do przodu:", number)
+    
     if open_flashscore:
         driver = web_driver()
         driver.get('https://www.flashscore.pl/')
@@ -69,21 +73,17 @@ try:
             pass
         st.write(driver.title)
 
-        date_page = st.checkbox("Otwórz")
-                                
-        if date_page:
-            st.write("Wybierz ilośćdni do przodu. 1: jutro, 2:pojutrze, 3: za 3 dni itd.")
-            number = st.number_input("Dni do porzodu",min_value=1, max_value=7, step=1)
-            st.write("Wybrna ilość dni do przodu:", number)
+         date_picker = driver.find_element(By.XPATH,'//button[@id="calendarMenu"]')
+        date_picker.click()
+        data = driver.find_element(By.XPATH,'//li[@class="calendar__listItem"]/button[contains(text(),"Dzisiaj")]/../following-sibling::li[number]')
+        data.click()
+        data_txt = data.text
+        st.write(data_txt)
+
+
             
-            open_date = st.button("Otwórz wybraną datę", type="primary")
-            if open_date:
-                date_picker = driver.find_element(By.XPATH,'//button[@id="calendarMenu"]')
-                date_picker.click()
-                data = driver.find_element(By.XPATH,'//li[@class="calendar__listItem"]/button[contains(text(),"Dzisiaj")]/../following-sibling::li[number]')
-                data.click()
-                data_txt = data.text
-                st.write(data_txt)
+
+               
         
         
         
