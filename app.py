@@ -46,23 +46,20 @@ try:
     # Create a cursor to execute SQL queries
     c = conn.cursor()
 
-    driver = web_driver()
-    driver.get('https://www.flashscore.pl/')
-    try:
-        cookies = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, '//button[@id="onetrust-accept-btn-handler"]')))
-        cookies.click()
-    except:
-        pass
-
+    start_button = st.button("Uruchom", type="primary")
+    if start_button:
+        driver = web_driver()
+        driver.get('https://www.flashscore.pl/')
+        try:
+            cookies = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, '//button[@id="onetrust-accept-btn-handler"]')))
+            cookies.click()
+        except:
+            pass
     
-    st.write(driver.title)
-    all_match = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, '//*[@title="Zobacz szczegóły meczu!"]')))
-    ilosc = len(all_match)
-    st.write(ilosc)
-    data = '2025-02-21'
-    tabela = []
-
-    
+        st.write(driver.title)
+        all_match = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, '//*[@title="Zobacz szczegóły meczu!"]')))
+        ilosc = len(all_match)
+        st.write(ilosc)
 
 except Exception as e:
     st.write(f"Failed to connect: {e}")
