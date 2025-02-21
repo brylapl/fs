@@ -5,3 +5,4 @@ webdriver-manager
 psycopg2-binary
 python-dotenv
 sqlalchemy
+pandas
