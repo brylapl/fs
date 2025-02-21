@@ -32,8 +32,8 @@ try:
     # Example query
     cursor.execute("SELECT * FROM match")
     result = cursor.fetchone()
-    st.write('Data:', row[0])
-    st.write('Home:', row[2])
+    st.write('Data:', result[0])
+    st.write('Home:', result[2])
 
     # Close the cursor and connection
     cursor.close()
