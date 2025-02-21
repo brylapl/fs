@@ -52,6 +52,7 @@ try:
     driver = web_driver()
 
     driver.get('https://www.flashscore.pl/')
+    st.write(driver.title)
     all_match = driver.find_elements(By.XPATH,'//*[@title="Zobacz szczegóły meczu!"]')
     data = data.split(' ')[0]
     data = f'{data}/2025'
@@ -73,12 +74,10 @@ try:
             home = mecz.find_element(By.XPATH,'./following-sibling::div[2]').text
             away = mecz.find_element(By.XPATH,'./following-sibling::div[3]').text
             stats = {
-                'Data': data,
-                'Time':time,
-                'Liga': liga,
-                'Rozgrywki':rozgrywki,
-                'Home': home,
-                'Away': away,
+                'data': data,
+                'time':time,
+                'home': home,
+                'away': away,
                 'Url':url,
                 }
             tabela.append(stats)
