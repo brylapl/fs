@@ -56,7 +56,7 @@ try:
     all_match = driver.find_elements(By.XPATH,'//*[@title="Zobacz szczegóły meczu!"]')
     ilosc = len(all_match)
     st.write(ilosc)
-    data = '2025-02-21
+    data = '2025-02-21'
     tabela = []
 
     for mecz in all_match[0:6]:
