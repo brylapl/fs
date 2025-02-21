@@ -66,13 +66,11 @@ try:
         st.write(driver.title)
         all_match = driver.find_elements(By.XPATH,'//*[@title="Zobacz szczegóły meczu!"]')
         for match in all_match:
-            liga = mecz.find_element(By.XPATH,'./preceding::div[contains(@class,"wclLeagueHeader")][1]/div[2]/div[1]/div[2]/span[1]').text
+            liga = match.find_element(By.XPATH,'./preceding::div[contains(@class,"wclLeagueHeader")][1]/div[2]/div[1]/div[2]/span[1]').text
             st.write(liga)
         c.close()
         conn.close()
         st.write("Connection closed.")
-
-
 
 except Exception as e:
     st.write(f"Failed to connect: {e}")
