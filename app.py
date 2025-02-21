@@ -73,7 +73,7 @@ try:
             pass
         st.write(driver.title)
 
-         date_picker = driver.find_element(By.XPATH,'//button[@id="calendarMenu"]')
+        date_picker = driver.find_element(By.XPATH,'//button[@id="calendarMenu"]')
         date_picker.click()
         data = driver.find_element(By.XPATH,'//li[@class="calendar__listItem"]/button[contains(text(),"Dzisiaj")]/../following-sibling::li[number]')
         data.click()
