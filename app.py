@@ -75,10 +75,17 @@ try:
 
         date_picker = driver.find_element(By.XPATH,'//button[@id="calendarMenu"]')
         date_picker.click()
-        data = driver.find_element(By.XPATH,f'//li[@class="calendar__listItem"]/button[contains(text(),"Dzisiaj")]/../following-sibling::li[{number}]')
-        data.click()
-        data_txt = data.text
-        st.write(data_txt)
+        sleep(2)
+        lista = driver.find_elements(By.XPATH,'//ul[@aria-labelledby="calendarMenu"]/li/button')
+        for item in lista:
+            st.write(item.text)
+       
+
+        
+        # data = driver.find_element(By.XPATH,f'//li[@class="calendar__listItem"]/button[contains(text(),"Dzisiaj")]/../following-sibling::li[{number}]')
+        # data.click()
+        # data_txt = data.text
+        # st.write(data_txt)
 
 
             
