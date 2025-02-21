@@ -30,9 +30,9 @@ try:
     cursor = connection.cursor()
     
     # Example query
-    cursor.execute("SELECT NOW();")
+    cursor.execute("SELECT * FROM match")
     result = cursor.fetchone()
-    print("Current Time:", result)
+    print("Results", result)
 
     # Close the cursor and connection
     cursor.close()
