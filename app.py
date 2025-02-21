@@ -59,8 +59,9 @@ try:
 
     open_flashscore = st.button("Otwórz Flashscore", type="primary")
     tabela = []
-    st.write("Wybierz ilośćdni do przodu. 1: jutro, 2:pojutrze, 3: za 3 dni itd.")
+    st.write("Wybierz ilośćdni do przodu: ")
     number = st.number_input("Dni do porzodu",min_value=1, max_value=7, step=1)
+    st.write(type(number))
     st.write("Wybrna ilość dni do przodu:", number)
     
     if open_flashscore:
