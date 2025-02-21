@@ -11,6 +11,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import StaleElementReferenceException
 import pandas as pd
+from time import sleep
+import time
+from datetime import datetime
+from datetime import timedelta
 
 # Load environment variables from .env
 load_dotenv()
