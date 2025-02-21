@@ -32,7 +32,7 @@ try:
     # Example query
     cursor.execute("SELECT * FROM match")
     result = cursor.fetchone()
-    print("Results", result)
+    st.write("Results", result)
 
     # Close the cursor and connection
     cursor.close()
