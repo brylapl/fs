@@ -65,8 +65,9 @@ try:
     
         st.write(driver.title)
         all_match = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, '//*[@title="Zobacz szczegóły meczu!"]')))
-        ilosc = len(all_match)
-        st.write(ilosc)
+        for match in all_match:
+            liga = mecz.find_element(By.XPATH,'./preceding::div[contains(@class,"wclLeagueHeader")][1]/div[2]/div[1]/div[2]/span[1]').text
+            st.write(liga)
         c.close()
         conn.close()
         st.write("Connection closed.")
