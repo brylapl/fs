@@ -73,12 +73,10 @@ try:
             pass
         st.write(driver.title)
 
-        date_picker = driver.find_element(By.XPATH,'//button[@id="calendarMenu"]')
-        date_picker.click()
-        sleep(2)
-        lista = driver.find_elements(By.XPATH,'//ul[@aria-labelledby="calendarMenu"]/li/button')
-        for item in lista:
-            st.write(item.text)
+        next_day = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, '//button[@title="Następny dzień"]')))
+        next_day.click()
+        data = driver.find_element(By.XPATH,'//button[@id="calendarMenu"]').text
+        st.write(data)
        
 
         
