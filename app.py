@@ -54,12 +54,9 @@ try:
     driver.get('https://www.flashscore.pl/')
     st.write(driver.title)
     all_match = driver.find_elements(By.XPATH,'//*[@title="Zobacz szczegóły meczu!"]')
-    data = data.split(' ')[0]
-    data = f'{data}/2025'
-    data = datetime.strptime(data, "%d/%m/%Y")
-    data = data.strftime("%Y-%m-%d")
     ilosc = len(all_match)
-    data = driver.find_element(By.XPATH,'//button[@id="calendarMenu"]').text
+    st.write(ilosc)
+    data = '2025-02-21
     tabela = []
 
     for mecz in all_match[0:6]:
