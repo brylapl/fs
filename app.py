@@ -61,7 +61,8 @@ try:
     data = f'{data}/2025'
     data = datetime.strptime(data, "%d/%m/%Y")
     data = data.strftime("%Y-%m-%d")
-    ilosc = len(all_match)data = driver.find_element(By.XPATH,'//button[@id="calendarMenu"]').text
+    ilosc = len(all_match)
+    data = driver.find_element(By.XPATH,'//button[@id="calendarMenu"]').text
     tabela = []
 
     for mecz in all_match[0:6]:
