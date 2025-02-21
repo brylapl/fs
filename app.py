@@ -69,7 +69,7 @@ try:
             pass
         st.write(driver.title)
 
-        date_page = st.checkbox(Otwórz")
+        date_page = st.checkbox("Otwórz")
                                 
         if date_page:
             st.write("Wybierz ilośćdni do przodu. 1: jutro, 2:pojutrze, 3: za 3 dni itd.")
