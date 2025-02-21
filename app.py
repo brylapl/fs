@@ -46,12 +46,8 @@ try:
     
     # Create a cursor to execute SQL queries
     c = conn.cursor()
+
     
-    # Example query
-    c.execute("SELECT * FROM match")
-    result = c.fetchone()
-    st.write('Data:', result[3])
-    st.write('Home:', result[4])
 
     driver = web_driver()
 
@@ -93,6 +89,15 @@ try:
 
     c.executemany('INSERT INTO match (data, time, home, away, url) VALUES (?,?,?,?,?)',list_of_tuples_home)
     conn.commit()
+
+    try:
+        # Example query
+        c.execute("SELECT * FROM match")
+        result = c.fetchone()
+        st.write('Data:', result[3])
+        st.write('Home:', result[4])
+    except:
+        st.write('Brak danych')
 
     # Close the cursor and connection
     c.close()
