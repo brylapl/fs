@@ -1,1 +1,3 @@
-title = 'Main page'
+import streamlit as st
+
+st.title('Test')
