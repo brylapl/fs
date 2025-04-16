@@ -1,8 +1,10 @@
 streamlit
-selenium == 4.13.0
+selenium
 seleniumbase
 webdriver-manager
 psycopg2-binary
 python-dotenv
 sqlalchemy
 pandas
+Beautifulsoup4
+requests
