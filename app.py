@@ -6,7 +6,7 @@ st.markdown('''
 <style>
 h1 {
 text-align:center;
-color:red;
+color:red!important;
 } 
 </style>
 </head>
