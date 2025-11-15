@@ -1,0 +1,10 @@
+MIDlet-1: ReadManiac, /res/icon.png, MIDlet1
+MIDlet-Jar-Size: 76736
+MIDlet-Jar-URL: reader.jar
+MIDlet-Name: ReadManiac
+MIDlet-Vendor: Roman Lut
+MIDlet-Version: 2.6.0
+MIDlet-Icon: /res/icon.png
+Build: Generic MIDP2.0, Full, No ZIP support, Nokia phones keys config, English - Central Europe
+MicroEdition-Profile: MIDP-2.0
+MicroEdition-Configuration: CLDC-1.0
